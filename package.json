@@ -2,9 +2,10 @@
   "name": "eleventy-site",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": ".eleventy.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "pnpm exec eleventy --serve",
+    "build": "pnpm exec eleventy"
   },
   "keywords": [],
   "author": "",
