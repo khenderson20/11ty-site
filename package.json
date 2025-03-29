@@ -5,12 +5,14 @@
   "main": ".eleventy.config.js",
   "scripts": {
     "dev": "pnpm exec eleventy --serve",
-    "build": "pnpm exec eleventy"
+    "build": "pnpm exec eleventy",
+    "clean": "rm -rf _site"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.0.0",
+    "sass": "^1.86.0"
   }
 }
