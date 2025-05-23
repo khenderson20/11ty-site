@@ -1,45 +1,75 @@
+import Nunjucks from "nunjucks";
 import sass from "sass";
+import path from "path";
+import { EleventyPluginBundle } from "@11ty/eleventy-plugin-bundle";
+import fs from "fs";
 
 export default async function(eleventyConfig) {
-    // Access to the full `eleventyConfig` Configuration API
-    eleventyConfig.setInputDirectory("views");
-    eleventyConfig.setIncludeDirectory("_includes");
-    eleventyConfig.setLayoutsDirectory("_layouts");
-    eleventyConfig.setOutputDirectory("_site");
-    eleventyConfig.setDataDirectory("_data");
-    eleventyConfig.setNunjucksEnvironmentOptions({
-      throwOnUndefined: true,
-      trimBlocks: true,
-      lstripBlocks: true,
-    });
-    eleventyConfig.addTemplateFormats("scss");
-    // creates extension for use
-    eleventyConfig.addExtension("scss", {
-      outputFileExtension: "css",
-      // `compile` is called once per .scss file in the input directory
-      compile: async function(inputContent) {
-        let result = sass.compileString(inputContent);
-        // This is the render function, `data` is the full cascade.
-        return async (data) => {
-          return result.css;
-        };
+  // BrowserSync settings
+  eleventyConfig.setBrowserSyncConfig({
+    open: true,
+    server: "_site"
+  });
+
+  // Nunjucks settings
+  let nunjucksEnvironment = new Nunjucks.Environment(
+    new Nunjucks.FileSystemLoader("_includes")
+  );
+
+  nunjucksEnvironment.addFilter("date", function() {
+    return new Date().getFullYear();
+  });
+
+  nunjucksEnvironment.addFilter("safe", function(value) {
+    return new Nunjucks.runtime.SafeString(value);
+  });
+
+  // Set the eleventyConfig to use the custom Nunjucks environment
+  eleventyConfig.setLibrary("njk", nunjucksEnvironment);
+  eleventyConfig.addPlugin(EleventyPluginBundle);
+  
+  // Set Directories
+  // --------------------------------------------------------------------------
+  // - input directory is where we store our content
+  eleventyConfig.setInputDirectory("views");
+  // - include directory is where we store our partials
+  eleventyConfig.setIncludeDirectory("_includes");
+  // - add layout aliases
+  eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
+  // - output directory is where we store our compiled files
+  eleventyConfig.setOutputDirectory("_site");
+  // - data directory is where we store our data files
+  eleventyConfig.setDataDirectory("_data");
+
+  // Process SCSS files (but not Tailwind - that's handled by the npm scripts)
+  eleventyConfig.addTemplateFormats("scss");
+  eleventyConfig.addExtension("scss", {
+    outputFileExtension: "css",
+    compile: async function(inputContent, inputPath) {
+      // Skip processing tailwind.scss if it exists
+      if(path.basename(inputPath) === "tailwind.scss") {
+        return;
       }
-    });
-    // Universal filters (Adds to Liquid, Nunjucks, and 11ty.js)
-    eleventyConfig.addFilter("myFilter", function(value) { /* … */ });
+      
+      // Process regular SCSS
+      let result = sass.compileString(inputContent);
+      return async () => result.css;
+    }
+  });
 
-    // Shortcodes added in this way are available in:
-    // * Markdown
-    // * Liquid
-    // * Nunjucks
-    // * JavaScript
-    // * Handlebars (not async)
-
-    eleventyConfig.addShortcode("user", function(firstName, lastName) { /* … */ });
-
-    // Async-friendly in v2.0.0
-    eleventyConfig.addShortcode("user", async function(myName) { /* … */ });
-
-    // Direct async method available
-    eleventyConfig.addAsyncShortcode("user", async function(myName) { /* … */ });
+  // Pass through files
+  eleventyConfig.addPassthroughCopy("views/images");
+  eleventyConfig.addPassthroughCopy("views/js");
+  
+  // Return the configuration object
+  return {
+    dir: {
+      input: "views",
+      includes: "_includes",
+      layouts: "_layouts",
+      output: "_site"
+    },
+    pathPrefix: "/",
+    htmlTemplateEngine: "njk"
   };
+}
