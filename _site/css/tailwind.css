@@ -243,7 +243,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: JetBrains Mono, Menlo, Monaco, Consolas, monospace;
   /* 1 */
   font-feature-settings: normal;
   /* 2 */
@@ -554,6 +554,117 @@ video {
   display: none;
 }
 
+/* Base styles for light/dark mode */
+
+:root {
+  --bg-color: #fbf1c7;
+  --text-color: #3c3836;
+}
+
+.dark {
+  --bg-color: #282828;
+  --text-color: #ebdbb2;
+}
+
+body {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 241 199 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(60 56 54 / var(--tw-text-opacity, 1));
+}
+
+body:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(40 40 40 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(235 219 178 / var(--tw-text-opacity, 1));
+}
+
+body {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(69 133 136 / var(--tw-text-opacity, 1));
+}
+
+h1:is(.dark *), h2:is(.dark *), h3:is(.dark *), h4:is(.dark *), h5:is(.dark *), h6:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(131 165 152 / var(--tw-text-opacity, 1));
+}
+
+a {
+  --tw-text-opacity: 1;
+  color: rgb(69 133 136 / var(--tw-text-opacity, 1));
+}
+
+a:hover {
+  --tw-text-opacity: 1;
+  color: rgb(104 157 106 / var(--tw-text-opacity, 1));
+}
+
+a:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(131 165 152 / var(--tw-text-opacity, 1));
+}
+
+a:hover:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(142 192 124 / var(--tw-text-opacity, 1));
+}
+
+a {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+code {
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(235 219 178 / var(--tw-bg-opacity, 1));
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+  font-family: JetBrains Mono, Menlo, Monaco, Consolas, monospace;
+}
+
+code:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(60 56 54 / var(--tw-bg-opacity, 1));
+}
+
+pre {
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(235 219 178 / var(--tw-bg-opacity, 1));
+  padding: 1rem;
+}
+
+pre:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(60 56 54 / var(--tw-bg-opacity, 1));
+}
+
+blockquote {
+  border-left-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: rgb(215 153 33 / var(--tw-border-opacity, 1));
+  padding-left: 1rem;
+  font-style: italic;
+}
+
+blockquote:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(250 189 47 / var(--tw-border-opacity, 1));
+}
+
 .container {
   width: 100%;
 }
@@ -588,26 +699,52 @@ video {
   }
 }
 
-/* Add your custom components here */
+/* Gruvbox-themed components */
 
-.btn-primary {
-  border-radius: 0.5rem;
+.navbar {
   --tw-bg-opacity: 1;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  background-color: rgb(213 196 161 / var(--tw-bg-opacity, 1));
+  padding: 1rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  color: rgb(60 56 54 / var(--tw-text-opacity, 1));
 }
 
-.btn-primary:hover {
+.navbar:is(.dark *) {
   --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity, 1));
+  background-color: rgb(80 73 69 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(235 219 178 / var(--tw-text-opacity, 1));
+}
+
+.footer {
+  --tw-bg-opacity: 1;
+  background-color: rgb(213 196 161 / var(--tw-bg-opacity, 1));
+  padding: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(60 56 54 / var(--tw-text-opacity, 1));
+}
+
+.footer:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(80 73 69 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(235 219 178 / var(--tw-text-opacity, 1));
+}
+
+.theme-toggle {
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(189 174 147 / var(--tw-bg-opacity, 1));
+  padding: 0.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(60 56 54 / var(--tw-text-opacity, 1));
+}
+
+.theme-toggle:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(102 92 84 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(235 219 178 / var(--tw-text-opacity, 1));
 }
 
 .mx-auto {
@@ -615,34 +752,62 @@ video {
   margin-right: auto;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
-.mt-6 {
-  margin-top: 1.5rem;
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .mt-8 {
   margin-top: 2rem;
 }
 
+.mt-auto {
+  margin-top: auto;
+}
+
 .flex {
   display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.h-5 {
+  height: 1.25rem;
 }
 
 .min-h-screen {
   min-height: 100vh;
 }
 
+.w-5 {
+  width: 1.25rem;
+}
+
+.max-w-none {
+  max-width: none;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
 }
 
 .bg-gray-100 {
@@ -655,22 +820,18 @@ video {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
 }
 
-.bg-primary {
+.bg-gruvbox-light-bg0 {
   --tw-bg-opacity: 1;
-  background-color: rgb(52 144 220 / var(--tw-bg-opacity, 1));
-}
-
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  background-color: rgb(251 241 199 / var(--tw-bg-opacity, 1));
 }
 
 .p-4 {
   padding: 1rem;
 }
 
-.p-6 {
-  padding: 1.5rem;
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .text-2xl {
@@ -678,27 +839,23 @@ video {
   line-height: 2rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .font-bold {
   font-weight: 700;
 }
 
-.font-medium {
-  font-weight: 500;
+.text-gruvbox-dark-blue {
+  --tw-text-opacity: 1;
+  color: rgb(69 133 136 / var(--tw-text-opacity, 1));
 }
 
-.text-gray-700 {
+.text-gruvbox-light-fg {
   --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
-}
-
-.text-primary {
-  --tw-text-opacity: 1;
-  color: rgb(52 144 220 / var(--tw-text-opacity, 1));
+  color: rgb(60 56 54 / var(--tw-text-opacity, 1));
 }
 
 .text-white {
@@ -712,6 +869,68 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.hover\:underline:hover {
-  text-decoration-line: underline;
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-200 {
+  transition-duration: 200ms;
+}
+
+.hover\:text-gruvbox-dark-aqua:hover {
+  --tw-text-opacity: 1;
+  color: rgb(104 157 106 / var(--tw-text-opacity, 1));
+}
+
+.dark\:block:is(.dark *) {
+  display: block;
+}
+
+.dark\:hidden:is(.dark *) {
+  display: none;
+}
+
+.dark\:bg-gruvbox-bg0:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(40 40 40 / var(--tw-bg-opacity, 1));
+}
+
+.dark\:text-gruvbox-blue:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(131 165 152 / var(--tw-text-opacity, 1));
+}
+
+.dark\:text-gruvbox-fg:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(235 219 178 / var(--tw-text-opacity, 1));
+}
+
+.dark\:hover\:text-gruvbox-aqua:hover:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(142 192 124 / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 768px) {
+  .md\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:p-6 {
+    padding: 1.5rem;
+  }
+}
+
