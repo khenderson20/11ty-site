@@ -14,12 +14,35 @@ cd eleventy-site
 - `pnpm run dev` - Starts development server with live reload (cleans output directory first)- `pnpm run build` - Builds the site for production (minified CSS)
 - `pnpm run clean` - Removes the output directory- `pnpm run serve` - Starts Eleventy's built-in server without rebuilding CSS
 ## Project Structure
+```bash
+eleventy-site/
+├── _includes/           # Reusable Nunjucks components (partials, macros)
+├── _layouts/            # Nunjucks layout templates defining page structure
+├── views/               # Primary content directories and template files
+│   ├── css/             # Stylesheets, including compiled Tailwind CSS
+│   ├── assets/          # Static assets like images, fonts, and documents
+│   └── *.njk            # Nunjucks content files (e.g., pages, collections)
+├── .eleventy.config.js  # Main Eleventy configuration file
+├── tailwind.config.js   # Tailwind CSS configuration for styling
+└── _site/               # Generated output (typically git-ignored)
 ```
-eleventy-site/├── _includes/           # Reusable components and partials
-├── _layouts/            # Layout templates├── views/               # Main content files
-│   ├── css/             # CSS files including Tailwind│   ├── assets/          # Static assets (images, fonts, etc.)
-│   └── *.njk            # Nunjucks template files├── _site/               # Generated output (not in repo)
-├── .eleventy.config.js  # Eleventy configuration└── tailwind.config.js   # Tailwind CSS configuration
+## Project Diagram Structure
+```bash
+                                      eleventy-site/
+                                      ├── .eleventy.config.js
+                                      └── tailwind.config.js
+                                                   │
+                ┌──────────────────────────────────┴───────────────────────────────────┐
+                │                                                                    │
+          _includes/                                                             views/
+          (Reusable Partials)                                                      ├── css/
+                                                                                   │   (Tailwind CSS Output)
+                │                                                                    │
+          _layouts/                                                                ├── assets/
+          (Page Structure Templates)                                               │   (Images, Fonts, etc.)
+                                                                                   │
+                                                                                   └── *.njk
+                                                                                       (Content Files)
 ```
 ## Features
 - **Eleventy v3.0.0** - Fast static site generator- **Tailwind CSS** - Utility-first CSS framework
