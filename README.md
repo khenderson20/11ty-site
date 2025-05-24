@@ -52,7 +52,8 @@ eleventy-site/
 ## Usage
 ### Development
 Start the development server:
-```bashpnpm run dev
+```bash 
+pnpm run dev
 ```
 This will:- Clean the output directory
 - Start Eleventy with live reload- Watch and compile Tailwind CSS changes
@@ -60,7 +61,8 @@ Visit `http://localhost:8080` to see your site.
 ### Production Build
 Build the site for production:
 ```bash
-pnpm run build```
+pnpm run build
+```
 The compiled site will be in the `_site` directory.
 ## Customization
 - Modify `tailwind.config.js` to customize the theme
