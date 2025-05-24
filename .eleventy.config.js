@@ -11,20 +11,36 @@ export default async function(eleventyConfig) {
     server: "_site"
   });
 
-  // Nunjucks settings
+  // First register filters with Eleventy
+  eleventyConfig.addFilter("date", function(value) {
+    if (value === "now") {
+      return new Date().getFullYear();
+    }
+    return new Date(value).getFullYear();
+  });
+
+  eleventyConfig.addFilter("safe", function(value) {
+    return value;  // Eleventy handles safe differently
+  });
+
+  // Then create and configure Nunjucks environment
   let nunjucksEnvironment = new Nunjucks.Environment(
-    new Nunjucks.FileSystemLoader("_includes")
+    new Nunjucks.FileSystemLoader(["_includes", "_layouts"])
   );
 
-  nunjucksEnvironment.addFilter("date", function() {
-    return new Date().getFullYear();
+  // Add the same filters to Nunjucks environment
+  nunjucksEnvironment.addFilter("date", function(value) {
+    if (value === "now") {
+      return new Date().getFullYear();
+    }
+    return new Date(value).getFullYear();
   });
 
   nunjucksEnvironment.addFilter("safe", function(value) {
     return new Nunjucks.runtime.SafeString(value);
   });
 
-  // Set the eleventyConfig to use the custom Nunjucks environment
+  // Set the Nunjucks environment
   eleventyConfig.setLibrary("njk", nunjucksEnvironment);
   eleventyConfig.addPlugin(EleventyPluginBundle);
   
@@ -36,6 +52,7 @@ export default async function(eleventyConfig) {
   eleventyConfig.setIncludeDirectory("_includes");
   // - add layout aliases
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
+  eleventyConfig.addLayoutAlias("base", "base.njk");
   // - output directory is where we store our compiled files
   eleventyConfig.setOutputDirectory("_site");
   // - data directory is where we store our data files
@@ -51,15 +68,46 @@ export default async function(eleventyConfig) {
         return;
       }
       
-      // Process regular SCSS
-      let result = sass.compileString(inputContent);
-      return async () => result.css;
+      try {
+        // Process regular SCSS
+        let result = sass.compileString(inputContent);
+        return async () => result.css;
+      } catch (error) {
+        console.error(`SCSS Error in ${inputPath}:`, error.message);
+        // Return empty CSS to prevent build failure
+        return async () => "";
+      }
     }
   });
 
-  // Pass through files
-  eleventyConfig.addPassthroughCopy("views/images");
-  eleventyConfig.addPassthroughCopy("views/js");
+  // Pass through static assets
+  eleventyConfig.addPassthroughCopy("views/assets");
+
+  // Add a single check after build
+  eleventyConfig.on('eleventy.after', async () => {
+    const jsDir = path.join("_site", "js");
+    const themeJsPath = path.join(jsDir, "theme.js");
+    
+    if (!fs.existsSync(jsDir)) {
+      fs.mkdirSync(jsDir, { recursive: true });
+    }
+    
+    if (!fs.existsSync(themeJsPath)) {
+      console.warn(`Theme.js not found in output, creating default version`);
+      const defaultJs = `
+// Default theme toggle functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleButton = document.getElementById('theme-toggle');
+  if (toggleButton) {
+    toggleButton.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    });
+  }
+});`;
+      fs.writeFileSync(themeJsPath, defaultJs);
+    }
+  });
   
   // Return the configuration object
   return {

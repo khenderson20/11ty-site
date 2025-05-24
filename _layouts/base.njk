@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Rad Blog | My Gruvbox Blog</title>
+  <title>{% if title %}{{ title }} | {% endif %}My Gruvbox Blog</title>
   <link rel="stylesheet" href="/css/tailwind.css">
   <script src="/js/theme.js" defer></script>
 </head>
 <body class="bg-gruvbox-light-bg0 dark:bg-gruvbox-bg0 text-gruvbox-light-fg dark:text-gruvbox-fg min-h-screen flex flex-col transition-colors duration-200">
   <header class="navbar shadow-md">
     <div class="container mx-auto flex justify-between items-center py-4">
-      <a href="/" class="text-2xl font-bold text-gruvbox-dark-blue dark:text-gruvbox-blue">My Rad Blog</a>
+      <a href="/" class="text-2xl font-bold text-gruvbox-dark-blue dark:text-gruvbox-blue">{{ title | default('Gruvbox Blog') }}</a>
       <div class="flex items-center space-x-4">
         <nav class="hidden md:flex space-x-4">
           <a href="/" class="hover:text-gruvbox-dark-aqua dark:hover:text-gruvbox-aqua transition-colors">Home</a>
@@ -27,18 +27,7 @@
   </header>
 
   <main class="container mx-auto flex-grow p-4 md:p-6">
-    
-<div class="prose max-w-none">
-  <h1>Welcome to My Blog</h1>
-  <p>This is a sample blog using Eleventy, Tailwind CSS, and the Gruvbox color scheme.</p>
-  
-  <!-- If you're using the date filter here, replace it with: -->
-  <p>Copyright © <span id="index-year">2024</span></p>
-  <script>
-    document.getElementById('index-year').textContent = new Date().getFullYear();
-  </script>
-</div>
-
+    {{ content | safe }}
   </main>
 
   <footer class="footer mt-auto">

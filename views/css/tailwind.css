@@ -1,3 +1,72 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;/*# sourceMappingURL=tailwind.css.map */
+@tailwind utilities;
+
+@layer base {
+  /* Base styles for light/dark mode */
+  :root {
+    --bg-color: theme('colors.gruvbox.light-bg0');
+    --text-color: theme('colors.gruvbox.light-fg');
+  }
+  
+  .dark {
+    --bg-color: theme('colors.gruvbox.bg0');
+    --text-color: theme('colors.gruvbox.fg');
+  }
+  
+  body {
+    @apply bg-gruvbox-light-bg0 text-gruvbox-light-fg dark:bg-gruvbox-bg0 dark:text-gruvbox-fg;
+    @apply transition-colors duration-200;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-gruvbox-dark-blue dark:text-gruvbox-blue;
+  }
+  
+  a {
+    @apply text-gruvbox-dark-blue dark:text-gruvbox-blue hover:text-gruvbox-dark-aqua dark:hover:text-gruvbox-aqua;
+    @apply transition-colors duration-200;
+  }
+  
+  code {
+    @apply font-mono bg-gruvbox-light-bg1 dark:bg-gruvbox-bg1 px-1 py-0.5 rounded;
+  }
+  
+  pre {
+    @apply bg-gruvbox-light-bg1 dark:bg-gruvbox-bg1 p-4 rounded-lg overflow-x-auto;
+  }
+  
+  blockquote {
+    @apply border-l-4 border-gruvbox-dark-yellow dark:border-gruvbox-yellow pl-4 italic;
+  }
+}
+
+@layer components {
+  /* Gruvbox-themed components */
+  .btn-primary {
+    @apply px-4 py-2 bg-gruvbox-dark-blue dark:bg-gruvbox-blue text-white rounded-lg 
+           hover:bg-gruvbox-blue dark:hover:bg-gruvbox-dark-blue transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 bg-gruvbox-dark-yellow dark:bg-gruvbox-yellow text-gruvbox-bg0 rounded-lg 
+           hover:bg-gruvbox-yellow dark:hover:bg-gruvbox-dark-yellow transition-colors;
+  }
+  
+  .card {
+    @apply bg-gruvbox-light-bg1 dark:bg-gruvbox-bg1 p-6 rounded-lg shadow-md;
+  }
+  
+  .navbar {
+    @apply bg-gruvbox-light-bg2 dark:bg-gruvbox-bg2 text-gruvbox-light-fg dark:text-gruvbox-fg p-4;
+  }
+  
+  .footer {
+    @apply bg-gruvbox-light-bg2 dark:bg-gruvbox-bg2 text-gruvbox-light-fg dark:text-gruvbox-fg p-6;
+  }
+  
+  .theme-toggle {
+    @apply p-2 rounded-full bg-gruvbox-light-bg3 dark:bg-gruvbox-bg3 text-gruvbox-light-fg dark:text-gruvbox-fg;
+  }
+}
+
