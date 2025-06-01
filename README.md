@@ -1,18 +1,22 @@
 # 11ty-site
 
-## Eleventy Site with Tailwind CSS and Nunjucks
-A modern static site built with Eleventy (11ty), styled with Tailwind CSS, and using Nunjucks as the templating language. Features a responsive design with Gruvbox color scheme and dark/light mode toggle.
+## [Eleventy Site](https://www.11ty.dev/) with Tailwind CSS and Nunjucks
+A modern static site built with [Eleventy (11ty)](https://www.11ty.dev/), styled with Tailwind CSS, and using Nunjucks as the templating language. Features a responsive design with Gruvbox color scheme and dark/light mode toggle.
 ## Prerequisites
-- Node.js (v18 or newer recommended)- pnpm package manager
+- [Node.js](https://nodejs.org/en/download) (v18 or newer recommended)- pnpm package manager
 ## Installation
 ```bash
 # Clone the repositorygit clone https://github.com/yourusername/eleventy-site.git
 cd eleventy-site
-# Install dependenciespnpm install
+# Install dependencies
+pnpm install
 ```
 ## Available Scripts
-- `pnpm run dev` - Starts development server with live reload (cleans output directory first)- `pnpm run build` - Builds the site for production (minified CSS)
-- `pnpm run clean` - Removes the output directory- `pnpm run serve` - Starts Eleventy's built-in server without rebuilding CSS
+- `pnpm run dev` - Starts development server with live reload (cleans output directory first)
+
+- `pnpm run build` - Builds the site for production (minified CSS)
+- `pnpm run clean` - Removes the output directory
+- `pnpm run serve` - Starts Eleventy's built-in server without rebuilding CSS
 ## Project Structure
 ```bash
 eleventy-site/
