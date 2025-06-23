@@ -1,62 +1,52 @@
-import Nunjucks from "nunjucks";
 import sass from "sass";
 import path from "path";
 import { EleventyPluginBundle } from "@11ty/eleventy-plugin-bundle";
 import fs from "fs";
 
-export default async function(eleventyConfig) {
+export default function(eleventyConfig) {
   // BrowserSync settings
   eleventyConfig.setBrowserSyncConfig({
     open: true,
-    server: "_site"
+    server: "../_site"
   });
 
-  // First register filters with Eleventy
-  eleventyConfig.addFilter("date", function(value) {
-    if (value === "now") {
-      return new Date().getFullYear();
+  // Set Directories first
+  // --------------------------------------------------------------------------
+  // - input directory is where we store our content
+  eleventyConfig.setInputDirectory("../views");
+  // - include directory is where we store our partials
+  eleventyConfig.setIncludeDirectory("../_includes");
+  // - add layout aliases
+  eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
+  eleventyConfig.addLayoutAlias("base", "base.njk");
+  // - output directory is where we store our compiled files
+  eleventyConfig.setOutputDirectory("../_site");
+  // - data directory is where we store our data files
+  eleventyConfig.setDataDirectory("../_data");
+
+  // Register filters after directory configuration
+  eleventyConfig.addFilter("dateFormat", function(value, format = "readable") {
+    const date = new Date(value);
+    // Return year only for ISO dates
+    if (format === "year") {
+      return date.getFullYear();
     }
-    return new Date(value).getFullYear();
+    if (format === "iso") {
+      return date.toISOString().split('T')[0];
+    }
+    // Default format for readable dates
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric'
+    });
   });
 
   eleventyConfig.addFilter("safe", function(value) {
     return value;  // Eleventy handles safe differently
   });
 
-  // Then create and configure Nunjucks environment
-  let nunjucksEnvironment = new Nunjucks.Environment(
-    new Nunjucks.FileSystemLoader(["_includes", "_layouts"])
-  );
-
-  // Add the same filters to Nunjucks environment
-  nunjucksEnvironment.addFilter("date", function(value) {
-    if (value === "now") {
-      return new Date().getFullYear();
-    }
-    return new Date(value).getFullYear();
-  });
-
-  nunjucksEnvironment.addFilter("safe", function(value) {
-    return new Nunjucks.runtime.SafeString(value);
-  });
-
-  // Set the Nunjucks environment
-  eleventyConfig.setLibrary("njk", nunjucksEnvironment);
   eleventyConfig.addPlugin(EleventyPluginBundle);
-  
-  // Set Directories
-  // --------------------------------------------------------------------------
-  // - input directory is where we store our content
-  eleventyConfig.setInputDirectory("views");
-  // - include directory is where we store our partials
-  eleventyConfig.setIncludeDirectory("_includes");
-  // - add layout aliases
-  eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
-  eleventyConfig.addLayoutAlias("base", "base.njk");
-  // - output directory is where we store our compiled files
-  eleventyConfig.setOutputDirectory("_site");
-  // - data directory is where we store our data files
-  eleventyConfig.setDataDirectory("_data");
 
   // Process SCSS files (but not Tailwind - that's handled by the npm scripts)
   eleventyConfig.addTemplateFormats("scss");
@@ -81,11 +71,12 @@ export default async function(eleventyConfig) {
   });
 
   // Pass through static assets
-  eleventyConfig.addPassthroughCopy("views/assets");
+  eleventyConfig.addPassthroughCopy("../views/assets");
+  eleventyConfig.addPassthroughCopy("../views/js");
 
   // Add a single check after build
   eleventyConfig.on('eleventy.after', async () => {
-    const jsDir = path.join("_site", "js");
+    const jsDir = path.join("../_site", "js");
     const themeJsPath = path.join(jsDir, "theme.js");
     
     if (!fs.existsSync(jsDir)) {
@@ -94,7 +85,12 @@ export default async function(eleventyConfig) {
     
     if (!fs.existsSync(themeJsPath)) {
       console.warn(`Theme.js not found in output, creating default version`);
-      const defaultJs = `
+      // Copy from views/js/theme.js if it exists, otherwise use default
+      if (fs.existsSync(path.join("../views/js", "theme.js"))) {
+        fs.copyFileSync(path.join("../views/js", "theme.js"), themeJsPath);
+        console.log("Copied theme.js from views/js directory");
+      } else {
+        const defaultJs = `
 // Default theme toggle functionality
 document.addEventListener('DOMContentLoaded', () => {
   const toggleButton = document.getElementById('theme-toggle');
@@ -105,17 +101,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });`;
-      fs.writeFileSync(themeJsPath, defaultJs);
+        fs.writeFileSync(themeJsPath, defaultJs);
+        console.log("Created default theme.js");
+      }
     }
   });
   
   // Return the configuration object
   return {
     dir: {
-      input: "views",
-      includes: "_includes",
-      layouts: "_layouts",
-      output: "_site"
+      input: "../views",
+      includes: "../_includes",
+      layouts: "../_layouts",
+      output: "../_site"
     },
     pathPrefix: "/",
     htmlTemplateEngine: "njk"

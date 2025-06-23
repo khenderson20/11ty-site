@@ -14,40 +14,40 @@ module.exports = {
       colors: {
         gruvbox: {
           // Dark mode colors
-          'bg0': '#282828', // Dark background
-          'bg1': '#3c3836',
-          'bg2': '#504945',
-          'bg3': '#665c54',
-          'bg4': '#7c6f64',
+          'bg0': '#0b0b2b', // Dark background (deep blue)
+          'bg1': '#1a1a4a',
+          'bg2': '#2a2a6a',
+          'bg3': '#3a3a8a',
+          'bg4': '#4a4aaa',
           
           // Light mode colors
-          'light-bg0': '#fbf1c7', // Light background
-          'light-bg1': '#ebdbb2',
-          'light-bg2': '#d5c4a1',
-          'light-bg3': '#bdae93',
-          'light-bg4': '#a89984',
+          'light-bg0': '#f8f5ff', // Light background
+          'light-bg1': '#eee6ff',
+          'light-bg2': '#e0d6ff',
+          'light-bg3': '#d0c6ff',
+          'light-bg4': '#c0b6ff',
           
           // Common colors
-          'fg': '#ebdbb2', // Foreground text for dark mode
-          'light-fg': '#3c3836', // Foreground text for light mode
+          'fg': '#f0f0ff', // Foreground text for dark mode
+          'light-fg': '#2a2a6a', // Foreground text for light mode
           
-          // Accent colors
-          'red': '#fb4934',
-          'green': '#b8bb26',
-          'yellow': '#fabd2f',
-          'blue': '#83a598',
-          'purple': '#d3869b',
-          'aqua': '#8ec07c',
-          'orange': '#fe8019',
+          // Accent colors (using your specific hex values)
+          'red': '#ff71ce', // Hot Pink
+          'green': '#05ffa1', // Mint Green
+          'yellow': '#fffb96', // Pastel Yellow
+          'blue': '#01cdfe', // Cyan
+          'purple': '#b967ff', // Purple
+          'aqua': '#01cdfe', // Cyan (duplicate of blue for compatibility)
+          'orange': '#ff71ce', // Hot Pink (duplicate of red for compatibility)
           
-          // Muted accent colors
-          'dark-red': '#cc241d',
-          'dark-green': '#98971a',
-          'dark-yellow': '#d79921',
-          'dark-blue': '#458588',
-          'dark-purple': '#b16286',
-          'dark-aqua': '#689d6a',
-          'dark-orange': '#d65d0e',
+          // Muted accent colors (darker variants)
+          'dark-red': '#cc5aa5', // Darker Hot Pink
+          'dark-green': '#04cc81', // Darker Mint Green
+          'dark-yellow': '#e6e287', // Darker Pastel Yellow
+          'dark-blue': '#01a4cb', // Darker Cyan
+          'dark-purple': '#9452cc', // Darker Purple
+          'dark-aqua': '#01a4cb', // Darker Cyan (duplicate of dark-blue)
+          'dark-orange': '#cc5aa5', // Darker Hot Pink (duplicate of dark-red)
         },
       },
     },

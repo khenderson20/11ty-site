@@ -16,7 +16,7 @@
   
   body {
     @apply bg-gruvbox-light-bg0 text-gruvbox-light-fg dark:bg-gruvbox-bg0 dark:text-gruvbox-fg;
-    @apply transition-colors duration-200;
+    @apply transition-colors duration-300;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -24,8 +24,8 @@
   }
   
   a {
-    @apply text-gruvbox-dark-blue dark:text-gruvbox-blue hover:text-gruvbox-dark-aqua dark:hover:text-gruvbox-aqua;
-    @apply transition-colors duration-200;
+    @apply text-gruvbox-dark-blue dark:text-gruvbox-blue hover:text-gruvbox-dark-orange dark:hover:text-gruvbox-orange;
+    @apply transition-colors duration-300;
   }
   
   code {
@@ -39,22 +39,40 @@
   blockquote {
     @apply border-l-4 border-gruvbox-dark-yellow dark:border-gruvbox-yellow pl-4 italic;
   }
+  
+  /* Cool navigation link animation */
+  .nav-link {
+    @apply text-gruvbox-light-fg dark:text-gruvbox-fg transition-colors duration-300;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gruvbox-dark-orange dark:bg-gruvbox-orange transition-all duration-300 ease-in-out;
+  }
+  
+  .nav-link:hover {
+    @apply text-gruvbox-dark-orange dark:text-gruvbox-orange;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
 }
 
 @layer components {
   /* Gruvbox-themed components */
   .btn-primary {
     @apply px-4 py-2 bg-gruvbox-dark-blue dark:bg-gruvbox-blue text-white rounded-lg 
-           hover:bg-gruvbox-blue dark:hover:bg-gruvbox-dark-blue transition-colors;
+           hover:bg-gruvbox-dark-orange dark:hover:bg-gruvbox-orange transition-colors duration-300;
   }
   
   .btn-secondary {
     @apply px-4 py-2 bg-gruvbox-dark-yellow dark:bg-gruvbox-yellow text-gruvbox-bg0 rounded-lg 
-           hover:bg-gruvbox-yellow dark:hover:bg-gruvbox-dark-yellow transition-colors;
+           hover:bg-gruvbox-dark-orange dark:hover:bg-gruvbox-orange transition-colors duration-300;
   }
   
   .card {
-    @apply bg-gruvbox-light-bg1 dark:bg-gruvbox-bg1 p-6 rounded-lg shadow-md;
+    @apply bg-gruvbox-light-bg1 dark:bg-gruvbox-bg1 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
   }
   
   .navbar {
@@ -66,7 +84,8 @@
   }
   
   .theme-toggle {
-    @apply p-2 rounded-full bg-gruvbox-light-bg3 dark:bg-gruvbox-bg3 text-gruvbox-light-fg dark:text-gruvbox-fg;
+    @apply p-2 rounded-full bg-gruvbox-light-bg3 dark:bg-gruvbox-bg3 text-gruvbox-light-fg dark:text-gruvbox-fg
+           hover:text-gruvbox-dark-orange dark:hover:text-gruvbox-orange transition-colors duration-300;
   }
 }
 

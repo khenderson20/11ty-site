@@ -1,0 +1,46 @@
+---
+layout: base.njk
+title: My First Blog Post
+date: 2024-06-01
+tags: blog
+permalink: /blog/my-first-post/
+---
+
+<article class="prose max-w-none">
+  <h1>{{ title }}</h1>
+  <time datetime="{{ page.date.toISOString().split('T')[0] }}">{{ page.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}</time>
+  
+  <p>This is my first blog post using Eleventy with Nunjucks templating.</p>
+  
+  <h2>Introduction</h2>
+  <p>Here's some introductory content for my blog post.</p>
+  
+  <h2>Main Content</h2>
+  <p>This is where the main content of my blog post goes.</p>
+</article>
+
+<!-- Blog Navigation -->
+<nav class="blog-nav mt-8 pt-6 border-t border-gruvbox-light-bg2 dark:border-gruvbox-bg2">
+  <div class="flex flex-col md:flex-row justify-between items-center">
+    <div class="flex space-x-4">
+      {%- if collections.blog %}
+        {%- set previousPost = collections.blog | getPreviousCollectionItem %}
+        {%- set nextPost = collections.blog | getNextCollectionItem %}
+        
+        {%- if previousPost %}
+          <a href="{{ previousPost.url }}" class="btn-secondary text-sm">← Previous Post</a>
+        {%- endif %}
+        
+        {%- if nextPost %}
+          <a href="{{ nextPost.url }}" class="btn-secondary text-sm">Next Post →</a>
+        {%- endif %}
+      {%- endif %}
+    </div>
+    
+    <a href="/blog/" class="btn-primary mt-4 md:mt-0">Back to All Posts</a>
+    
+    <div class="mt-4 md:mt-0 text-sm">
+      Published on <time datetime="{{ page.date.toISOString().split('T')[0] }}">{{ page.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}</time>
+    </div>
+  </div>
+</nav>
