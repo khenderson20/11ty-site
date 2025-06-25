@@ -12,42 +12,53 @@ module.exports = {
         mono: ['JetBrains Mono', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       colors: {
-        gruvbox: {
-          // Dark mode colors
-          'bg0': '#0b0b2b', // Dark background (deep blue)
-          'bg1': '#1a1a4a',
-          'bg2': '#2a2a6a',
-          'bg3': '#3a3a8a',
-          'bg4': '#4a4aaa',
-          
-          // Light mode colors
-          'light-bg0': '#f8f5ff', // Light background
-          'light-bg1': '#eee6ff',
-          'light-bg2': '#e0d6ff',
-          'light-bg3': '#d0c6ff',
-          'light-bg4': '#c0b6ff',
-          
-          // Common colors
-          'fg': '#f0f0ff', // Foreground text for dark mode
-          'light-fg': '#2a2a6a', // Foreground text for light mode
-          
-          // Accent colors (using your specific hex values)
-          'red': '#ff71ce', // Hot Pink
-          'green': '#05ffa1', // Mint Green
-          'yellow': '#fffb96', // Pastel Yellow
-          'blue': '#01cdfe', // Cyan
-          'purple': '#b967ff', // Purple
-          'aqua': '#01cdfe', // Cyan (duplicate of blue for compatibility)
-          'orange': '#ff71ce', // Hot Pink (duplicate of red for compatibility)
-          
-          // Muted accent colors (darker variants)
-          'dark-red': '#cc5aa5', // Darker Hot Pink
-          'dark-green': '#04cc81', // Darker Mint Green
-          'dark-yellow': '#e6e287', // Darker Pastel Yellow
-          'dark-blue': '#01a4cb', // Darker Cyan
-          'dark-purple': '#9452cc', // Darker Purple
-          'dark-aqua': '#01a4cb', // Darker Cyan (duplicate of dark-blue)
-          'dark-orange': '#cc5aa5', // Darker Hot Pink (duplicate of dark-red)
+        muted: {
+          // Dark mode backgrounds - deep, sophisticated tones
+          'bg-primary': '#1a1a1a',     // Rich charcoal
+          'bg-secondary': '#242424',   // Slightly lighter charcoal
+          'bg-tertiary': '#2e2e2e',    // Medium charcoal
+          'bg-accent': '#383838',      // Light charcoal
+          'bg-hover': '#424242',       // Hover state
+
+          // Light mode backgrounds - warm, soft tones
+          'light-bg-primary': '#fafaf9',    // Warm white
+          'light-bg-secondary': '#f5f5f4',  // Soft stone
+          'light-bg-tertiary': '#e7e5e4',   // Light stone
+          'light-bg-accent': '#d6d3d1',     // Medium stone
+          'light-bg-hover': '#c7c2bd',      // Hover stone
+
+          // Text colors
+          'text-primary': '#e5e5e5',        // Light gray for dark mode
+          'text-secondary': '#b3b3b3',      // Medium gray for dark mode
+          'text-tertiary': '#808080',       // Subtle gray for dark mode
+          'light-text-primary': '#1c1917',  // Dark brown for light mode
+          'light-text-secondary': '#44403c', // Medium brown for light mode
+          'light-text-tertiary': '#78716c',  // Light brown for light mode
+
+          // Muted accent colors - sophisticated and subtle
+          'sage': '#9ca3af',           // Muted sage green
+          'sage-dark': '#6b7280',      // Darker sage
+          'sage-light': '#d1d5db',     // Lighter sage
+
+          'clay': '#a78bfa',           // Muted purple-clay
+          'clay-dark': '#8b5cf6',      // Darker clay
+          'clay-light': '#c4b5fd',     // Lighter clay
+
+          'stone': '#94a3b8',          // Muted blue-stone
+          'stone-dark': '#64748b',     // Darker stone
+          'stone-light': '#cbd5e1',    // Lighter stone
+
+          'earth': '#a3a3a3',          // Muted earth tone
+          'earth-dark': '#737373',     // Darker earth
+          'earth-light': '#d4d4d4',    // Lighter earth
+
+          'moss': '#84cc16',           // Muted moss green
+          'moss-dark': '#65a30d',      // Darker moss
+          'moss-light': '#a3e635',     // Lighter moss
+
+          'rust': '#ea580c',           // Muted rust orange
+          'rust-dark': '#c2410c',      // Darker rust
+          'rust-light': '#fb923c',     // Lighter rust
         },
       },
     },
