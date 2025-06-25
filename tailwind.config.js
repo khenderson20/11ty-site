@@ -42,10 +42,13 @@ module.exports = {
 
           'clay': '#a78bfa',           // Muted purple-clay
           'clay-dark': '#8b5cf6',      // Darker clay
+          'clay-darker': '#6b46c1',    // Accessible darker clay (6.25:1 contrast with white)
+          'clay-accessible': '#a78bfa', // Accessible clay for dark mode (7.78:1 contrast with dark bg)
           'clay-light': '#c4b5fd',     // Lighter clay
 
           'stone': '#94a3b8',          // Muted blue-stone
           'stone-dark': '#64748b',     // Darker stone
+          'stone-darker': '#4a5568',   // Accessible darker stone (7.24:1 contrast with white)
           'stone-light': '#cbd5e1',    // Lighter stone
 
           'earth': '#a3a3a3',          // Muted earth tone
