@@ -2,16 +2,17 @@
   "name": "eleventy-site",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": ".eleventy.config.js",
   "scripts": {
     "dev": "pnpm run clean && run-p dev:*",
-    "dev:eleventy": "pnpm exec eleventy --serve",
+    "dev:eleventy": "pnpm exec eleventy --serve --config=.eleventy.config.js",
     "dev:tailwind": "pnpm exec tailwindcss -i ./views/css/tailwind.css -o ./_site/css/tailwind.css --watch",
     "build": "pnpm run clean && run-s build:tailwind build:eleventy",
-    "build:eleventy": "NODE_ENV=production pnpm exec eleventy",
-    "build:tailwind": "NODE_ENV=production pnpm exec tailwindcss -i ./views/css/tailwind.css -o ./_site/css/tailwind.css --minify",
+    "build:eleventy": "cross-env NODE_ENV=production pnpm exec eleventy --config=.eleventy.config.js",
+    "build:tailwind": "cross-env NODE_ENV=production pnpm exec tailwindcss -i ./views/css/tailwind.css -o ./_site/css/tailwind.css --minify",
     "clean": "rimraf _site",
-    "serve": "pnpm exec eleventy --serve"
+    "serve": "pnpm exec eleventy --serve --config=.eleventy.config.js"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,7 @@
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "npm-run-all": "^4.1.5",
     "rimraf": "^6.0.1"
   }

@@ -1,28 +1,17 @@
 import sass from "sass";
 import path from "path";
-import { EleventyPluginBundle } from "@11ty/eleventy-plugin-bundle";
 import fs from "fs";
 
 export default function(eleventyConfig) {
   // BrowserSync settings
   eleventyConfig.setBrowserSyncConfig({
     open: true,
-    server: "../_site"
+    server: "_site"
   });
 
-  // Set Directories first
-  // --------------------------------------------------------------------------
-  // - input directory is where we store our content
-  eleventyConfig.setInputDirectory("../views");
-  // - include directory is where we store our partials
-  eleventyConfig.setIncludeDirectory("../_includes");
-  // - add layout aliases
-  eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
-  eleventyConfig.addLayoutAlias("base", "base.njk");
-  // - output directory is where we store our compiled files
-  eleventyConfig.setOutputDirectory("../_site");
-  // - data directory is where we store our data files
-  eleventyConfig.setDataDirectory("../_data");
+  // Add layout aliases
+  eleventyConfig.addLayoutAlias("post", "post");
+  eleventyConfig.addLayoutAlias("base", "base");
 
   // Register filters after directory configuration
   eleventyConfig.addFilter("dateFormat", function(value, format = "readable") {
@@ -42,11 +31,7 @@ export default function(eleventyConfig) {
     });
   });
 
-  eleventyConfig.addFilter("safe", function(value) {
-    return value;  // Eleventy handles safe differently
-  });
 
-  eleventyConfig.addPlugin(EleventyPluginBundle);
 
   // Process SCSS files (but not Tailwind - that's handled by the npm scripts)
   eleventyConfig.addTemplateFormats("scss");
@@ -71,23 +56,23 @@ export default function(eleventyConfig) {
   });
 
   // Pass through static assets
-  eleventyConfig.addPassthroughCopy("../views/assets");
-  eleventyConfig.addPassthroughCopy("../views/js");
+  eleventyConfig.addPassthroughCopy("views/assets");
+  eleventyConfig.addPassthroughCopy("views/js");
 
   // Add a single check after build
   eleventyConfig.on('eleventy.after', async () => {
-    const jsDir = path.join("../_site", "js");
+    const jsDir = path.join("_site", "js");
     const themeJsPath = path.join(jsDir, "theme.js");
-    
+
     if (!fs.existsSync(jsDir)) {
       fs.mkdirSync(jsDir, { recursive: true });
     }
-    
+
     if (!fs.existsSync(themeJsPath)) {
       console.warn(`Theme.js not found in output, creating default version`);
       // Copy from views/js/theme.js if it exists, otherwise use default
-      if (fs.existsSync(path.join("../views/js", "theme.js"))) {
-        fs.copyFileSync(path.join("../views/js", "theme.js"), themeJsPath);
+      if (fs.existsSync(path.join("views/js", "theme.js"))) {
+        fs.copyFileSync(path.join("views/js", "theme.js"), themeJsPath);
         console.log("Copied theme.js from views/js directory");
       } else {
         const defaultJs = `
@@ -110,10 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Return the configuration object
   return {
     dir: {
-      input: "../views",
+      input: "views",
       includes: "../_includes",
       layouts: "../_layouts",
-      output: "../_site"
+      output: "_site"
     },
     pathPrefix: "/",
     htmlTemplateEngine: "njk"

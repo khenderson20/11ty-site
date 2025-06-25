@@ -1,0 +1,91 @@
+---
+layout: base.njk
+---
+
+<article class="max-w-3xl mx-auto px-4 py-8">
+  <header class="mb-8">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">{{ title }}</h1>
+    
+    <div class="flex items-center text-sm text-gruvbox-dark-gray dark:text-gruvbox-gray mb-4">
+      <time datetime="{{ date | dateFormat('iso') }}" class="flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        {{ date | dateFormat }}
+      </time>
+      
+      {% if tags and tags.length > 0 %}
+      <span class="mx-2">•</span>
+      <div class="flex flex-wrap items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+        </svg>
+        {% for tag in tags %}
+          {% if tag != "blog" %}
+          <a href="/tags/{{ tag }}/" class="hover:underline mr-2 last:mr-0">{{ tag }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    
+    {% if featured_image %}
+    <div class="rounded-lg overflow-hidden shadow-lg mb-6">
+      <img src="{{ featured_image }}" alt="{{ title }}" class="w-full h-auto">
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gruvbox-dark-blue dark:prose-headings:text-gruvbox-blue prose-a:text-gruvbox-dark-blue dark:prose-a:text-gruvbox-blue hover:prose-a:text-gruvbox-dark-orange dark:hover:prose-a:text-gruvbox-orange">
+    {{ content | safe }}
+  </div>
+  
+  {% if tags and tags.length > 0 %}
+  <div class="mt-8 pt-6 border-t border-gruvbox-light-bg2 dark:border-gruvbox-bg2">
+    <h3 class="text-lg font-semibold mb-2">Tags</h3>
+    <div class="flex flex-wrap gap-2">
+      {% for tag in tags %}
+        {% if tag != "blog" %}
+        <a href="/tags/{{ tag }}/" class="px-3 py-1 bg-gruvbox-light-bg2 dark:bg-gruvbox-bg2 rounded-full text-sm hover:bg-gruvbox-dark-yellow dark:hover:bg-gruvbox-yellow hover:text-gruvbox-bg0 transition-colors duration-200">{{ tag }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  
+  <nav class="blog-nav mt-8 pt-6 border-t border-gruvbox-light-bg2 dark:border-gruvbox-bg2">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="flex space-x-4">
+        {%- if collections.blog %}
+          {%- set previousPost = collections.blog | getPreviousCollectionItem %}
+          {%- set nextPost = collections.blog | getNextCollectionItem %}
+          
+          {%- if previousPost %}
+            <a href="{{ previousPost.url }}" class="btn-secondary text-sm flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              Previous Post
+            </a>
+          {%- endif %}
+          
+          {%- if nextPost %}
+            <a href="{{ nextPost.url }}" class="btn-secondary text-sm flex items-center">
+              Next Post
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          {%- endif %}
+        {%- endif %}
+      </div>
+      
+      <a href="/blog/" class="btn-primary mt-4 md:mt-0 flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        Back to All Posts
+      </a>
+    </div>
+  </nav>
+</article>
