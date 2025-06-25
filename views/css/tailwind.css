@@ -200,5 +200,82 @@
   .prose-muted a {
     @apply text-muted-stone-dark dark:text-muted-stone-light no-underline hover:underline;
   }
+
+  /* 3D Cube Animation */
+  .cube-container {
+    @apply w-24 h-24 relative perspective-500 mx-auto my-8;
+  }
+  
+  .cube {
+    @apply w-full h-full relative transform-style-3d;
+    transform-style: preserve-3d;
+    animation: cube-rotate 12s infinite linear;
+    transform-origin: center center;
+  }
+  
+  .face {
+    @apply absolute w-full h-full opacity-80 border border-white/20 dark:border-black/20;
+    backface-visibility: visible;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .front {
+    transform: translateZ(3rem);
+  }
+  
+  .back {
+    transform: rotateY(180deg) translateZ(3rem);
+  }
+  
+  .right {
+    transform: rotateY(90deg) translateZ(3rem);
+  }
+  
+  .left {
+    transform: rotateY(-90deg) translateZ(3rem);
+  }
+  
+  .top {
+    transform: rotateX(90deg) translateZ(3rem);
+  }
+  
+  .bottom {
+    transform: rotateX(-90deg) translateZ(3rem);
+  }
+  
+  /* Add perspective utility */
+  .perspective-500 {
+    perspective: 500px;
+  }
+  
+  /* Add transform style utility */
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  
+  /* Custom keyframe animations for the cube */
+  @keyframes cube-rotate {
+    0% {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+      transform: rotateX(90deg) rotateY(90deg);
+    }
+    50% {
+      transform: rotateX(180deg) rotateY(180deg);
+    }
+    75% {
+      transform: rotateX(270deg) rotateY(270deg);
+    }
+    100% {
+      transform: rotateX(360deg) rotateY(360deg);
+    }
+  }
+
+  
+  /* Hover effect to pause animation */
+  .cube-container:hover .cube {
+    animation-play-state: paused;
+  }
 }
 

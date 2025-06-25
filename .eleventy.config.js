@@ -58,6 +58,7 @@ export default function(eleventyConfig) {
   // Pass through static assets
   eleventyConfig.addPassthroughCopy("views/assets");
   eleventyConfig.addPassthroughCopy("views/js");
+  eleventyConfig.addPassthroughCopy("node_modules/animate.css/animate.min.css");
 
   // Add a single check after build
   eleventyConfig.on('eleventy.after', async () => {
