@@ -1,9 +1,136 @@
 ---
 layout: base.njk
-title: About Page
-permalink: /about/index.html
+title: About
+permalink: /about/
 ---
 
-## Heading One
+<div class="prose-muted">
+  <!-- Hero Section -->
+  <section class="mb-16">
+    <div class="flex flex-col md:flex-row items-center gap-12">
+      <div class="flex-1">
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-6 leading-tight">
+          Hello, I'm <span class="text-muted-clay-dark dark:text-muted-clay-light">thoughtful</span>
+        </h1>
+        <p class="text-xl text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed mb-6">
+          A designer, developer, and digital craftsperson who believes in creating meaningful experiences through thoughtful design and intentional technology.
+        </p>
+        <p class="text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed">
+          I'm passionate about the intersection of design and technology, where beautiful interfaces meet purposeful functionality. This space is where I share my thoughts on creating better digital experiences.
+        </p>
+      </div>
+      <div class="w-64 h-64 bg-gradient-to-br from-muted-sage via-muted-stone to-muted-clay-light rounded-2xl flex items-center justify-center shadow-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-32 w-32 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+      </div>
+    </div>
+  </section>
 
-## Heading Two
+  <!-- What I Do -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-semibold tracking-tight mb-8">What I Do</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-muted-sage/20 rounded-lg flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-muted-sage-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold">Design</h3>
+        </div>
+        <p class="text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed">
+          Creating intuitive user experiences and beautiful interfaces that serve both form and function. I believe great design is invisible—it just works.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-muted-clay/20 rounded-lg flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-muted-clay-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold">Development</h3>
+        </div>
+        <p class="text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed">
+          Building responsive, accessible, and performant web applications using modern technologies. Code should be as elegant as the experiences it creates.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-muted-stone/20 rounded-lg flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-muted-stone-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold">Writing</h3>
+        </div>
+        <p class="text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed">
+          Sharing thoughts and insights about design, technology, and the creative process. Writing helps me think more clearly and connect with others.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-muted-earth/20 rounded-lg flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-muted-earth-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold">Mentoring</h3>
+        </div>
+        <p class="text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed">
+          Helping others grow in their design and development journey. There's nothing more rewarding than seeing someone discover their creative potential.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="mb-16">
+    <div class="card bg-gradient-to-br from-muted-light-bg-secondary to-muted-light-bg-tertiary dark:from-muted-bg-secondary dark:to-muted-bg-tertiary">
+      <h2 class="text-3xl font-semibold tracking-tight mb-6">My Philosophy</h2>
+      <div class="space-y-6 text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed">
+        <p>
+          <strong class="text-muted-light-text-primary dark:text-muted-text-primary">Less is more.</strong>
+          In a world of digital noise, I believe in creating calm, focused experiences that respect users' time and attention.
+        </p>
+        <p>
+          <strong class="text-muted-light-text-primary dark:text-muted-text-primary">Quality over quantity.</strong>
+          I'd rather create one meaningful piece of work than ten forgettable ones. Every project deserves thoughtful consideration.
+        </p>
+        <p>
+          <strong class="text-muted-light-text-primary dark:text-muted-text-primary">Continuous learning.</strong>
+          The best designers and developers never stop learning. I'm always exploring new tools, techniques, and perspectives.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Connect -->
+  <section>
+    <div class="text-center">
+      <h2 class="text-3xl font-semibold tracking-tight mb-6">Let's Connect</h2>
+      <p class="text-xl text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed mb-8 max-w-2xl mx-auto">
+        I'm always interested in meaningful conversations about design, technology, and creativity. Feel free to reach out.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="mailto:hello@example.com" class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          Send a Message
+        </a>
+        <a href="https://twitter.com" class="btn-secondary">
+          <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+          </svg>
+          Follow on Twitter
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
