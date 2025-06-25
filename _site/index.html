@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Muted Thoughts</title>
+  <title>Home | Kevin Henderson</title>
   <link rel="stylesheet" href="/css/tailwind.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,14 +14,14 @@
     <div class="container mx-auto px-6 py-6">
       <div class="flex justify-between items-center">
         <a href="/" class="text-2xl font-semibold tracking-tight text-muted-light-text-primary dark:text-muted-text-primary hover:text-muted-clay-dark dark:hover:text-muted-clay-light transition-all duration-300">
-          Muted Thoughts
+          Kevin Henderson
         </a>
 
         <div class="flex items-center space-x-8">
           <nav class="hidden md:flex items-center space-x-8">
             <a href="/" class="nav-link">Home</a>
-            <a href="/blog/" class="nav-link">Writing</a>
             <a href="/about/" class="nav-link">About</a>
+            <a href="https://github.com/khenderson20" class="nav-link" target="_blank" rel="noopener noreferrer">Projects</a>
           </nav>
 
           <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -46,8 +46,8 @@
       <nav id="mobile-menu" class="md:hidden mt-6 pb-4 border-t border-muted-light-bg-accent dark:border-muted-bg-accent pt-4 hidden">
         <div class="flex flex-col space-y-4">
           <a href="/" class="nav-link">Home</a>
-          <a href="/blog/" class="nav-link">Writing</a>
           <a href="/about/" class="nav-link">About</a>
+          <a href="https://github.com/khenderson20" class="nav-link" target="_blank" rel="noopener noreferrer">Projects</a>
         </div>
       </nav>
     </div>
@@ -60,75 +60,106 @@
   <section class="mb-16">
     <div class="text-center max-w-3xl mx-auto">
       <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-6 leading-tight">
-        Welcome to <span class="text-muted-clay-dark dark:text-muted-clay-light">Muted Thoughts</span>
+        Hi there! I'm <span class="text-muted-clay-dark dark:text-muted-clay-light">Kevin</span> 👋
       </h1>
       <p class="text-xl md:text-2xl text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed mb-8">
-        A space for quiet contemplation, thoughtful writing, and meaningful conversations about technology, design, and the human experience.
+        A front-end developer who thrives on crafting engaging, user-focused experiences. My curiosity fuels constant experimentation with new frameworks and technologies, expanding my toolkit one project at a time.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/blog/" class="btn-primary">
-          Explore Writing
+        <a href="/about/" class="btn-primary">
+          Learn More About Me
         </a>
-        <a href="/about/" class="btn-secondary">
-          About Me
+        <a href="https://github.com/khenderson20" class="btn-secondary" target="_blank" rel="noopener noreferrer">
+          View My Work
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Featured Content -->
+  <!-- Current Focus -->
   <section class="mb-16">
-    <div class="flex items-center justify-between mb-8">
-      <h2 class="text-3xl font-semibold tracking-tight">Recent Thoughts</h2>
-      <a href="/blog/" class="text-muted-stone-dark dark:text-muted-stone-light hover:text-muted-clay-dark dark:hover:text-muted-clay-light transition-colors duration-300 font-medium">
-        View all →
-      </a>
+    <h2 class="text-3xl font-semibold tracking-tight mb-8">Currently Working On</h2>
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="card">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold">React & TypeScript</h3>
+        </div>
+        <p class="text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed">
+          Creating dynamic front-end applications with an emphasis on scalable, maintainable code and intuitive user experiences.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364-.636l-.707.707M21 12h-1M17.657 18.364l-.707-.707M12 21v-1m-6.364-.636l.707-.707M3 12h1m2.343-5.657l.707.707" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold">Python & LLMs</h3>
+        </div>
+        <p class="text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed">
+          Delving into large language models for natural language processing and automation, exploring the intersection of AI and development.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold">Open Source</h3>
+        </div>
+        <p class="text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed">
+          Learning to engage in open-source projects by filing GitHub issues and preparing pull requests to contribute to the community.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold">Always Learning</h3>
+        </div>
+        <p class="text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed">
+          Staying curious about emerging technologies and continuously broadening my skill set. Currently pursuing my undergraduate degree, graduating Fall 2025.
+        </p>
+      </div>
     </div>
-
-    <div class="grid gap-8 md:grid-cols-2">
-      <article class="blog-post-card">
-        <header class="mb-4">
-          <h3 class="text-xl font-semibold mb-2 leading-tight">
-            <a href="/blog/my-first-post/" class="hover:text-muted-clay-dark dark:hover:text-muted-clay-light transition-colors duration-300">
-              My First Blog Post
-            </a>
-          </h3>
-          <time datetime="2024-06-01" class="text-sm text-muted-light-text-tertiary dark:text-muted-text-tertiary">
-            May 31, 2024
-          </time>
-        </header>
-
-        
-
-        <a href="/blog/my-first-post/" class="inline-flex items-center text-muted-stone-dark dark:text-muted-stone-light hover:text-muted-clay-dark dark:hover:text-muted-clay-light transition-colors duration-300 font-medium text-sm">
-          Read more
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </article>
-    </div>
-
-    
   </section>
 
   <!-- About Preview -->
   <section class="card">
     <div class="flex flex-col md:flex-row items-center gap-8">
       <div class="flex-1">
-        <h2 class="text-3xl font-semibold tracking-tight mb-4">A Little About Me</h2>
+        <h2 class="text-3xl font-semibold tracking-tight mb-4">Beyond the Code</h2>
         <p class="text-muted-light-text-secondary dark:text-muted-text-secondary leading-relaxed mb-6">
-          I believe in the power of thoughtful design, meaningful technology, and quiet moments of reflection.
-          This space is where I share my thoughts on creating better digital experiences and finding balance in our connected world.
+          When I'm not immersed in code, you can find me enjoying music 🎶 or anything Star Wars ⭐️—two passions that energize my creativity and problem-solving approach. I approach challenges with unwavering dedication, consistently learning from setbacks, and driving solutions forward.
         </p>
-        <a href="/about/" class="btn-secondary">
-          Learn More
-        </a>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/about/" class="btn-secondary">
+            My Full Story
+          </a>
+          <a href="https://www.linkedin.com/in/kevin-h-cs/" class="btn-secondary" target="_blank" rel="noopener noreferrer">
+            Connect on LinkedIn
+          </a>
+        </div>
       </div>
-      <div class="w-48 h-48 bg-gradient-to-br from-muted-sage to-muted-clay-light rounded-full flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-        </svg>
+      <div class="w-48 h-48 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+        <div class="text-center text-white">
+          <div class="text-4xl mb-2">🚀</div>
+          <div class="text-sm font-medium">Learning<br>Everyday</div>
+        </div>
       </div>
     </div>
   </section>
@@ -140,22 +171,22 @@
     <div class="container mx-auto px-6 py-8">
       <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
         <p class="text-sm text-muted-light-text-tertiary dark:text-muted-text-tertiary">
-          &copy; <span id="current-year"></span> Muted Thoughts. Crafted with intention.
+          &copy; <span id="current-year"></span> Kevin Henderson. Built with curiosity and continuous learning.
         </p>
         <script>
           document.getElementById('current-year').textContent = new Date().getFullYear();
         </script>
         <div class="flex items-center space-x-6">
-          <a href="https://github.com" class="text-muted-light-text-tertiary dark:text-muted-text-tertiary hover:text-muted-stone-dark dark:hover:text-muted-stone-light transition-colors duration-300">
+          <a href="https://github.com/khenderson20" class="text-muted-light-text-tertiary dark:text-muted-text-tertiary hover:text-muted-stone-dark dark:hover:text-muted-stone-light transition-colors duration-300" target="_blank" rel="noopener noreferrer">
             <span class="sr-only">GitHub</span>
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
             </svg>
           </a>
-          <a href="https://twitter.com" class="text-muted-light-text-tertiary dark:text-muted-text-tertiary hover:text-muted-stone-dark dark:hover:text-muted-stone-light transition-colors duration-300">
-            <span class="sr-only">Twitter</span>
+          <a href="https://www.linkedin.com/in/kevin-h-cs/" class="text-muted-light-text-tertiary dark:text-muted-text-tertiary hover:text-muted-stone-dark dark:hover:text-muted-stone-light transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+            <span class="sr-only">LinkedIn</span>
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
             </svg>
           </a>
         </div>
