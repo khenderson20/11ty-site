@@ -3,89 +3,190 @@
 @tailwind utilities;
 
 @layer base {
-  /* Base styles for light/dark mode */
+  /* Base styles for light/dark mode with muted colors */
   :root {
-    --bg-color: theme('colors.gruvbox.light-bg0');
-    --text-color: theme('colors.gruvbox.light-fg');
+    --bg-color: theme('colors.muted.light-bg-primary');
+    --text-color: theme('colors.muted.light-text-primary');
   }
-  
+
   .dark {
-    --bg-color: theme('colors.gruvbox.bg0');
-    --text-color: theme('colors.gruvbox.fg');
+    --bg-color: theme('colors.muted.bg-primary');
+    --text-color: theme('colors.muted.text-primary');
   }
-  
+
   body {
-    @apply bg-gruvbox-light-bg0 text-gruvbox-light-fg dark:bg-gruvbox-bg0 dark:text-gruvbox-fg;
-    @apply transition-colors duration-300;
+    @apply bg-muted-light-bg-primary text-muted-light-text-primary dark:bg-muted-bg-primary dark:text-muted-text-primary;
+    @apply transition-colors duration-500 ease-in-out;
+    @apply font-light leading-relaxed;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-gruvbox-dark-blue dark:text-gruvbox-blue;
+    @apply font-semibold text-muted-light-text-primary dark:text-muted-text-primary;
+    @apply tracking-tight leading-tight;
   }
-  
+
+  h1 { @apply text-3xl md:text-4xl mb-6; }
+  h2 { @apply text-2xl md:text-3xl mb-5; }
+  h3 { @apply text-xl md:text-2xl mb-4; }
+  h4 { @apply text-lg md:text-xl mb-3; }
+  h5 { @apply text-base md:text-lg mb-2; }
+  h6 { @apply text-sm md:text-base mb-2; }
+
+  p {
+    @apply mb-4 leading-relaxed;
+  }
+
   a {
-    @apply text-gruvbox-dark-blue dark:text-gruvbox-blue hover:text-gruvbox-dark-orange dark:hover:text-gruvbox-orange;
-    @apply transition-colors duration-300;
+    @apply text-muted-stone-dark dark:text-muted-stone-light hover:text-muted-clay-dark dark:hover:text-muted-clay-light;
+    @apply transition-all duration-300 ease-in-out;
+    @apply underline decoration-transparent hover:decoration-current underline-offset-2;
   }
-  
+
   code {
-    @apply font-mono bg-gruvbox-light-bg1 dark:bg-gruvbox-bg1 px-1 py-0.5 rounded;
+    @apply font-mono bg-muted-light-bg-tertiary dark:bg-muted-bg-tertiary text-muted-light-text-secondary dark:text-muted-text-secondary;
+    @apply px-2 py-1 rounded-md text-sm;
   }
-  
+
   pre {
-    @apply bg-gruvbox-light-bg1 dark:bg-gruvbox-bg1 p-4 rounded-lg overflow-x-auto;
+    @apply bg-muted-light-bg-tertiary dark:bg-muted-bg-tertiary p-6 rounded-lg overflow-x-auto;
+    @apply border border-muted-light-bg-accent dark:border-muted-bg-accent;
   }
-  
+
+  pre code {
+    @apply bg-transparent p-0;
+  }
+
   blockquote {
-    @apply border-l-4 border-gruvbox-dark-yellow dark:border-gruvbox-yellow pl-4 italic;
+    @apply border-l-4 border-muted-sage dark:border-muted-sage-light pl-6 py-2 italic;
+    @apply bg-muted-light-bg-secondary dark:bg-muted-bg-secondary rounded-r-lg;
+    @apply text-muted-light-text-secondary dark:text-muted-text-secondary;
   }
-  
-  /* Cool navigation link animation */
+
+  /* Enhanced navigation link animation */
   .nav-link {
-    @apply text-gruvbox-light-fg dark:text-gruvbox-fg transition-colors duration-300;
+    @apply relative text-muted-light-text-secondary dark:text-muted-text-secondary;
+    @apply transition-all duration-300 ease-in-out;
+    @apply hover:text-muted-light-text-primary dark:hover:text-muted-text-primary;
   }
-  
+
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gruvbox-dark-orange dark:bg-gruvbox-orange transition-all duration-300 ease-in-out;
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-muted-clay-dark dark:bg-muted-clay-light;
+    @apply transition-all duration-300 ease-in-out;
   }
-  
-  .nav-link:hover {
-    @apply text-gruvbox-dark-orange dark:text-gruvbox-orange;
-  }
-  
+
   .nav-link:hover::after {
     @apply w-full;
+  }
+
+  /* Smooth focus states for accessibility */
+  *:focus {
+    @apply outline-none ring-2 ring-muted-clay-dark dark:ring-muted-clay-light ring-opacity-50;
+    @apply transition-all duration-200;
   }
 }
 
 @layer components {
-  /* Gruvbox-themed components */
+  /* Muted-themed components with sophisticated styling */
   .btn-primary {
-    @apply px-4 py-2 bg-gruvbox-dark-blue dark:bg-gruvbox-blue text-white rounded-lg 
-           hover:bg-gruvbox-dark-orange dark:hover:bg-gruvbox-orange transition-colors duration-300;
+    @apply px-6 py-3 bg-muted-stone-dark dark:bg-muted-stone-light text-white dark:text-muted-bg-primary;
+    @apply rounded-lg font-medium tracking-wide;
+    @apply hover:bg-muted-clay-dark dark:hover:bg-muted-clay-light;
+    @apply transform hover:scale-105 active:scale-95;
+    @apply transition-all duration-300 ease-in-out;
+    @apply shadow-md hover:shadow-lg;
   }
-  
+
   .btn-secondary {
-    @apply px-4 py-2 bg-gruvbox-dark-yellow dark:bg-gruvbox-yellow text-gruvbox-bg0 rounded-lg 
-           hover:bg-gruvbox-dark-orange dark:hover:bg-gruvbox-orange transition-colors duration-300;
+    @apply px-6 py-3 bg-transparent border-2 border-muted-stone-dark dark:border-muted-stone-light;
+    @apply text-muted-stone-dark dark:text-muted-stone-light rounded-lg font-medium tracking-wide;
+    @apply hover:bg-muted-stone-dark dark:hover:bg-muted-stone-light;
+    @apply hover:text-white dark:hover:text-muted-bg-primary;
+    @apply transform hover:scale-105 active:scale-95;
+    @apply transition-all duration-300 ease-in-out;
   }
-  
+
+  .btn-subtle {
+    @apply px-4 py-2 bg-muted-light-bg-accent dark:bg-muted-bg-accent;
+    @apply text-muted-light-text-secondary dark:text-muted-text-secondary;
+    @apply rounded-md font-medium hover:bg-muted-light-bg-hover dark:hover:bg-muted-bg-hover;
+    @apply transition-all duration-300 ease-in-out;
+  }
+
   .card {
-    @apply bg-gruvbox-light-bg1 dark:bg-gruvbox-bg1 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+    @apply bg-muted-light-bg-secondary dark:bg-muted-bg-secondary;
+    @apply p-8 rounded-xl shadow-sm hover:shadow-md;
+    @apply border border-muted-light-bg-accent dark:border-muted-bg-accent;
+    @apply transform hover:scale-[1.02] transition-all duration-300 ease-in-out;
   }
-  
+
+  .card-compact {
+    @apply bg-muted-light-bg-secondary dark:bg-muted-bg-secondary;
+    @apply p-6 rounded-lg shadow-sm hover:shadow-md;
+    @apply border border-muted-light-bg-accent dark:border-muted-bg-accent;
+    @apply transition-all duration-300 ease-in-out;
+  }
+
   .navbar {
-    @apply bg-gruvbox-light-bg2 dark:bg-gruvbox-bg2 text-gruvbox-light-fg dark:text-gruvbox-fg p-4;
+    @apply bg-muted-light-bg-secondary/80 dark:bg-muted-bg-secondary/80 backdrop-blur-md;
+    @apply border-b border-muted-light-bg-accent dark:border-muted-bg-accent;
+    @apply text-muted-light-text-primary dark:text-muted-text-primary;
+    @apply sticky top-0 z-50;
   }
-  
+
   .footer {
-    @apply bg-gruvbox-light-bg2 dark:bg-gruvbox-bg2 text-gruvbox-light-fg dark:text-gruvbox-fg p-6;
+    @apply bg-muted-light-bg-tertiary dark:bg-muted-bg-tertiary;
+    @apply border-t border-muted-light-bg-accent dark:border-muted-bg-accent;
+    @apply text-muted-light-text-secondary dark:text-muted-text-secondary;
   }
-  
+
   .theme-toggle {
-    @apply p-2 rounded-full bg-gruvbox-light-bg3 dark:bg-gruvbox-bg3 text-gruvbox-light-fg dark:text-gruvbox-fg
-           hover:text-gruvbox-dark-orange dark:hover:text-gruvbox-orange transition-colors duration-300;
+    @apply p-3 rounded-full bg-muted-light-bg-accent dark:bg-muted-bg-accent;
+    @apply text-muted-light-text-secondary dark:text-muted-text-secondary;
+    @apply hover:bg-muted-light-bg-hover dark:hover:bg-muted-bg-hover;
+    @apply hover:text-muted-clay-dark dark:hover:text-muted-clay-light;
+    @apply transform hover:scale-110 active:scale-95;
+    @apply transition-all duration-300 ease-in-out;
+    @apply shadow-sm hover:shadow-md;
+  }
+
+  /* Blog-specific components */
+  .blog-post-card {
+    @apply card-compact cursor-pointer;
+  }
+
+  .blog-post-card:hover h2 {
+    @apply text-muted-clay-dark dark:text-muted-clay-light;
+  }
+
+  .blog-post-card h2 {
+    @apply text-xl font-semibold mb-3 transition-colors duration-300;
+  }
+
+  .blog-post-meta {
+    @apply text-sm text-muted-light-text-tertiary dark:text-muted-text-tertiary;
+    @apply flex items-center space-x-4;
+  }
+
+  .prose-muted {
+    @apply max-w-none;
+  }
+
+  .prose-muted h1,
+  .prose-muted h2,
+  .prose-muted h3,
+  .prose-muted h4,
+  .prose-muted h5,
+  .prose-muted h6 {
+    @apply text-muted-light-text-primary dark:text-muted-text-primary;
+  }
+
+  .prose-muted p {
+    @apply text-muted-light-text-secondary dark:text-muted-text-secondary;
+  }
+
+  .prose-muted a {
+    @apply text-muted-stone-dark dark:text-muted-stone-light no-underline hover:underline;
   }
 }
 
